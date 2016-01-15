@@ -1,0 +1,27 @@
+<md-dialog>
+    <md-subheader>Create Character</md-subheader>
+    <form action="" name="" ng-submit="$event.preventDefault(); createCharacter()">
+        <md-dialog-content>
+            <md-input-container>
+                <label></label>
+                <input type="file" file-model="character.image">
+            </md-input-container>
+            <md-input-container>
+                <label>Character Name</label>
+                <input type="text" required ng-model="character.name">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Character desc</label>
+                <textarea required ng-model="character.desc"></textarea>
+            </md-input-container>
+        </md-dialog-content>
+        <div class="md-actions">
+            <md-button type="submit" class="md-primary">
+                Create
+            </md-button>
+            <md-button type="button" ng-click="closeDialog()" class="md-primary">
+                Cancel
+            </md-button>
+        </div>
+    </form>
+</md-dialog>

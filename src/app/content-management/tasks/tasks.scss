@@ -1,0 +1,69 @@
+#create-task {
+    .dragover {
+        border: 5px dashed blue;
+    }
+    .drop-box {
+        background: url(../assets/img/raport-default.png) center center no-repeat;
+        font-size: 14px;
+        color: rgb(190, 188, 188);
+        border: 5px dashed #DDD;
+        width: 100%;
+        height: 150px;
+        text-align: center;
+        padding: 5px;
+        margin: 10px 0;
+    }
+    .image-preview {
+        width: 200px;
+        height: 200px;
+    }
+    #dialog {
+        overflow: auto;
+        margin-bottom: 10px;
+        .dialog-block {
+            background: rgb(233, 234, 236);
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 0 10px;
+        }
+    }
+    .chat-plus {
+        position: absolute;
+        right: 0px;
+        top: 5px;
+    }
+    .photobank {
+        margin-bottom: 10px;
+    }
+}
+
+.image {
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    width: 48px;
+    height: 48px;
+    margin: 16px;
+}
+.character-option{
+    margin-bottom: 5px;
+    margin-top:5px;
+}
+.currentImage{
+    display: block;
+    max-width: 200px;
+
+}
+
+.task-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+.editTaskCircle-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    margin-right: 20px;
+}

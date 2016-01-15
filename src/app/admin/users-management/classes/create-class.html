@@ -1,0 +1,118 @@
+<section id="create-course">
+    <div class="block-header">
+        <h2>Users Mananagement</h2>
+    </div>
+    <md-card>
+        <md-toolbar layout-padding class="md-warn">
+            <div class="md-toolbar-tools">
+                <md-button data-ui-sref="main.admin-manage-classes" class="toolbar-back-btn">
+                    <md-icon class="md-light"> <i class="zmdi zmdi-hc-3x zmdi-chevron-left"></i> </md-icon>
+                </md-button>
+                <h2 class="md-title"><span>Create Class</span></h2>
+                <mark ng-if="createdCourse">Class successfully created</mark>
+                <p ng-if="error" class="text-danger">{{error.error}}</p>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <form name="createClassForm" ng-submit="$event.preventDefault(); createClass()">
+                <md-input-container>
+                    <label>Class Name</label>
+                    <input type="text" required ng-model="newClass.name">
+                </md-input-container>
+                <md-input-container>
+                    <label>Class Description</label>
+                    <input type="text" required ng-model="newClass.desc">
+                </md-input-container>
+                <md-input-container>
+                    <md-toolbar class="md-priamry">
+                        <div class="md-toolbar-tools">
+                            <h2 class="md-flex">Add Courses</h2>
+                        </div>
+                    </md-toolbar>
+                    <table md-data-table md-row-select="selectedCourses" md-progress="deferred">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Course name</th>
+                                <th>Course description</th>
+                                <th>Episodes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="course in courses">
+                                <td>{{$index + 1}}</td>
+                                <td>{{course.name}}</td>
+                                <td>{{course.desc}}</td>
+                                <td>{{course.episodes.length}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-input-container>
+                <md-input-container>
+                    <md-toolbar class="md-priamry">
+                        <div class="md-toolbar-tools">
+                            <h2 class="md-flex">Add Students</h2>
+                        </div>
+                    </md-toolbar>
+                    <table md-data-table md-row-select="selectedStudents" md-progress="deferred">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Student avatar</th>
+                                <th>Student name</th>
+                                <th>Registered</th>
+                                <th>Classes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="student in students">
+                                <td>{{$index + 1}}</td>
+                                <td><img fallback-src="assets/img/avatar.png" class="student-avatar" ng-src="{{userImg+student.id}}" alt=""></td>
+                                <td>{{student.first_name}} {{student.last_name}}</td>
+                                <td>{{student.registered |date :'MM/dd/yyyy' }}</td>
+                                <td>{{student.classes.length}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-input-container>
+                <md-container>
+                    <md-toolbar class="md-priamry">
+                        <div class="md-toolbar-tools">
+                            <h2 class="md-flex">Set Teacher</h2>
+                        </div>
+                    </md-toolbar>
+                    <md-input-container>
+                        <md-select layout-align="center center" placeholder="Select Teacher for this class" ng-model="newClass.selectedTeacher">
+                            <md-option ng-repeat="teacher in teachers track by $index" value="{{teacher.id}}"><img class="image" fallback-src="../assets/img/location.png" ng-src="{{userImg}}{{teacher.id}}">{{teacher.first_name}}{{teacher.last_name}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                    <!-- <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Teacher avatar</th>
+                                <th>Teacher name</th>
+                                <th>Classes</th>
+                                <th>Select</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="teacher in teachers">
+                                <td>{{$index + 1}}</td>
+                                <td><img fallback-src="assets/img/avatar.png" class="student-avatar" ng-src="{{userImg+teacher.id}}" alt=""></td>
+                                <td>{{teacher.first_name}} {{teacher.last_name}}</td>
+                                <td>{{teacher.classes.length}}</td>
+                                <td>
+                                    <input type="radio" name="selectedTeacher" ng-model="newClass.selectedTeacher" ng-value="teacher.id">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> -->
+                </md-container>
+                <md-button type="submit" class="md-raised">
+                    Save
+                </md-button>
+            </form>
+        </md-card-content>
+    </md-card>
+</section>

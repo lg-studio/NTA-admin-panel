@@ -1,0 +1,64 @@
+<section id="characters">
+    <div class="block-header">
+        <h2>Content Mananagement</h2>
+    </div>
+    <md-card>
+        <md-card-content>
+            <md-data-table-toolbar ng-hide="selected.length || filter.show">
+                <h2 class="md-title">Characters</h2>
+                <div flex=""></div>
+                <md-button class="md-icon-button" ng-click="filter.show = true" aria-label="Show Search">
+                    <i class="zmdi zmdi-hc-lg zmdi-search"></i>
+                </md-button>
+                <md-button aria-label="Create character"  data-ui-sref="main.create-character" class="md-fab md-button md-primary">
+                    <i class="zmdi zmdi-plus zmdi-hc-lg"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-toolbar ng-show="filter.show && !selected.length">
+                <md-input-container class="md-icon-float" flex>
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Search</label>
+                    <input type="text" ng-model="query.filter" ng-model-options="filter.options">
+                </md-input-container>
+                <md-button class="md-icon-button" ng-click="removeFilter()" aria-label="Remove Search">
+                    <i class="zmdi zmdi-close zmdi-hc-lg"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-toolbar ng-show="selected.length" layout-align="space-between">
+                <div>{{selected.length}} items selected</div>
+                <md-button class="md-fab md-mini md-primary" aria-label="Delete Selected Character" ng-click="deleteSelectedCharacters()">
+                    <i class="zmdi zmdi-delete"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-container>
+                <table md-data-table md-row-select="selected" md-progress="deferred">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Character image</th>
+                            <th>Character name</th>
+                            <th>Character desc</th>
+                            <!-- <th>Edit</th> -->
+                            <!-- <th unit="g" order-by="fat.value">dummy label</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="character in characters | filter: query.filter">
+                            <td>{{$index + 1}}</td>
+                           <td><img fallback-src="assets/img/avatar.png" class="sharacter-img" ng-src="{{characterImg}}{{character.id}}"></td>
+                            <td ng-bind="::character.name"></td>
+                            <td ng-bind="::character.desc"></td>
+                            <!-- <td ng-bind="::character.name"></td> -->
+                            <td>
+                                <md-button aria-label="Edit character"  class="md-fab md-mini md-warn chat-plus md-button md-default-theme" data-ui-sref="main.edit-character({id: character.id})">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-data-table-container>
+            <!--  <md-data-table-pagination md-limit="query.limit" md-page="1" md-total="{{courses.length}}" md-trigger="onPaginationChange"></md-data-table-pagination> -->
+        </md-card-content>
+    </md-card>
+</section>

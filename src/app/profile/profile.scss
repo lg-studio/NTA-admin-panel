@@ -1,0 +1,115 @@
+#profile-main .pmo-pic .pmo-stat{
+      padding-bottom: 25px;
+}
+
+/*
+ * Profile View
+ */
+
+.profile-view {
+  text-align: center;
+}
+
+.profile-view .pv-header {
+  position: relative;
+  height: 145px;
+  width: 100%;
+  background-image: url('../assets/images/headers/sm/4.png');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-view .pv-header > .pv-main {
+  border-radius: 50%;
+  width: 130px;
+  position: absolute;
+  height: 130px;
+  bottom: -50px;
+  left: 50%;
+  margin-left: -65px;
+  -webkit-transition: all;
+  -o-transition: all;
+  transition: all;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+
+.profile-view .pv-body {
+  margin-top: 70px;
+  padding: 0 20px 20px;
+}
+
+.profile-view .pv-body > h2 {
+  margin: 0;
+  line-height: 100%;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.profile-view .pv-body > small {
+  display: block;
+  color: #8E8E8E;
+  margin: 10px 0 15px;
+}
+
+.profile-view .pv-body .pv-contact,
+.profile-view .pv-body .pv-follow {
+  padding: 0;
+  list-style: none;
+}
+
+.profile-view .pv-body .pv-contact > li,
+.profile-view .pv-body .pv-follow > li {
+  display: inline-block;
+}
+
+.profile-view .pv-body .pv-follow {
+  margin: 20px -20px;
+  padding: 10px;
+  background-color: #F7F7F7;
+  border-top: 1px solid #EEE;
+  border-bottom: 1px solid #EEE;
+}
+
+.profile-view .pv-body .pv-follow > li {
+  padding: 0 10px;
+}
+
+.profile-view .pv-body .pv-contact > li {
+  margin: 0 5px;
+}
+
+.profile-view .pv-body .pv-contact > li > .md {
+  line-height: 100%;
+  vertical-align: text-bottom;
+  font-size: 22px;
+}
+
+.profile-view .pv-body .pv-follow-btn {
+  padding: 7px 20px;
+  background: #00bcd4;
+  color: #FFF;
+  border-radius: 3px;
+  text-transform: uppercase;
+  display: block;
+  -webkit-transition: all;
+  -o-transition: all;
+  transition: all;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+
+.profile-view .pv-body .pv-follow-btn:hover {
+  background: #00a5bb;
+}
+
+.profile-view:hover .pv-main {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}

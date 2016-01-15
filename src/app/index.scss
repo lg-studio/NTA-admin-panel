@@ -1,0 +1,424 @@
+/**
+ *  Do not remove this comments bellow. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
+
+html {
+  font-family: 'Roboto Slab', serif;
+}
+
+[layout=row] {
+  flex-direction: row;
+}
+body {
+  padding-top: 0px !important;
+}
+
+#main-container{
+  height: 100%;
+  width: 100%;
+}
+
+.mailn_conte{
+  background:#edecec !important;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+section.jumbotron {
+  margin-bottom: 30px;
+  padding: 1px 30px;
+  background-color: #5aadbb;
+  text-align: center;
+
+  color: white;
+
+  h1 {
+    font-size: 3em;
+  }
+}
+
+/// Loading bar
+
+
+/* Make clicks pass-through */
+#loading-bar,
+#loading-bar-spinner {
+  pointer-events: none;
+  -webkit-pointer-events: none;
+  -webkit-transition: 350ms linear all;
+  -moz-transition: 350ms linear all;
+  -o-transition: 350ms linear all;
+  transition: 350ms linear all;
+}
+
+#loading-bar.ng-enter,
+#loading-bar.ng-leave.ng-leave-active,
+#loading-bar-spinner.ng-enter,
+#loading-bar-spinner.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+#loading-bar.ng-enter.ng-enter-active,
+#loading-bar.ng-leave,
+#loading-bar-spinner.ng-enter.ng-enter-active,
+#loading-bar-spinner.ng-leave {
+  opacity: 1;
+}
+
+#loading-bar .bar {
+  -webkit-transition: width 350ms;
+  -moz-transition: width 350ms;
+  -o-transition: width 350ms;
+  transition: width 350ms;
+
+  background: #29d;
+  position: fixed;
+  z-index: 10002;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-bottom-right-radius: 1px;
+  border-top-right-radius: 1px;
+}
+
+/* Fancy blur effect */
+#loading-bar .peg {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: .45;
+  -moz-box-shadow: #29d 1px 0 6px 1px;
+  -ms-box-shadow: #29d 1px 0 6px 1px;
+  -webkit-box-shadow: #29d 1px 0 6px 1px;
+  box-shadow: #29d 1px 0 6px 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+#loading-bar-spinner {
+  display: block;
+  position: fixed;
+  z-index: 10002;
+  top: 10px;
+  left: 10px;
+}
+
+#loading-bar-spinner .spinner-icon {
+  width: 14px;
+  height: 14px;
+
+  border:  solid 2px transparent;
+  border-top-color:  #29d;
+  border-left-color: #29d;
+  border-radius: 50%;
+
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+  -moz-animation:    loading-bar-spinner 400ms linear infinite;
+  -ms-animation:     loading-bar-spinner 400ms linear infinite;
+  -o-animation:      loading-bar-spinner 400ms linear infinite;
+  animation:         loading-bar-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes loading-bar-spinner {
+  0%   { -webkit-transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-moz-keyframes loading-bar-spinner {
+  0%   { -moz-transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-o-keyframes loading-bar-spinner {
+  0%   { -o-transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@-ms-keyframes loading-bar-spinner {
+  0%   { -ms-transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes loading-bar-spinner {
+  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}
+
+///// old main.css
+
+/*student grading*/
+.audio span {
+  display:block;
+}
+.row{
+    margin-right: 15px;
+}
+.students_wrap{
+    overflow: auto;
+    max-height: 600px;
+}
+.student_greding,.student_analistic{
+    padding-top: 70px;
+    padding-bottom: 20px;
+    position: relative;
+    background: #fff;
+}
+
+.student_greding_info{
+    position: relative;
+    padding:10px;
+    border-top: 1px solid #c8c8c8;
+    background: #fff;
+}
+.student_greding_info p{
+   font-size: 16px;
+   color:#000;
+}
+.student_greding_info i{
+    display: block;
+    position: absolute;
+    right: 0px;
+    font-size: 20px;
+    top:20px;
+}
+.col-xs-1 i{
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 0px !important;
+}
+.showInfo{
+    background-color: #fff;
+}
+.student_greding_info i.everage_grade{
+    display: block;
+    position: absolute;
+    right: 30px;
+    top:15px;
+    color:#fff;
+    font-size: 16px;
+    padding: 4px 15px;
+    background: red;
+    border-radius: 15px;
+}
+.student_greding_info span{
+    margin-right: 10px;
+}
+.student_greding_info i:hover{
+    cursor: pointer;
+}
+.info_active{
+    background: #f3f3f3;
+}
+.group_list{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.group_name{
+    font-size: 20px;
+}
+.semesters_list{
+    position: absolute;
+    right: 320px;
+    top: 10px;
+}
+.episodes_list{
+    position: absolute;
+    right: 205px;
+    top: 10px;
+}
+.scenes_list{
+    position: absolute;
+    right: 100px;
+    top: 10px;
+}
+.semesters_list i.caret,.episodes_list i.caret,.scenes_list i.caret{
+    margin-right: 4px;
+    margin-top: 0px;
+}
+
+.group_list .dropdown-menu {
+    right: o;
+}
+.student_rating,.student_statistics{
+    height: 40px;
+    margin-bottom: 10px;
+    background:#fff;
+    border-radius: 10px;
+    border:1px solid #c8ccd3;
+    position: relative;
+}
+.student_rating p, .student_statistics p{
+    margin-top: 9px;
+    margin-left: 10px;
+    position: absolute;
+}
+.student_rating .student_rating_stars, .week_progress{
+    position: absolute;
+    right: 10px;
+    margin-top: 8px;
+}
+.student_rating .student_rating_stars i {
+    position: static;
+    float: left;
+    font-size: 20px;
+    color: #ffc107;
+}
+.glyphicon-star-empty:before {
+    color:#5e5e5e;
+}
+
+/*statistics*/
+.student_analistic .semesters_list{
+    position: absolute;
+    top: 20px;
+    right: 130px;
+}
+.student_analistic .semesters_list i.caret, .groups_list i.caret {
+   margin-right: -5px;
+   margin-left: 5px;
+   margin-top: 0px;
+}
+
+.week_progress .progress {
+    top:2px;
+}
+table tr td{
+    position: relative;
+}
+ .progress {
+  border: 1px solid rgb(187, 169, 169);
+  box-shadow: none;
+  border-radius: 0;
+  height: 5px;
+  margin-bottom: 0;
+  position: absolute;
+  height: 20px;
+  width: 100%;
+}
+
+/*students admin*/
+.col-xs-1 span{
+    font-weight: bold;
+}
+
+/*curriculum*/
+.curriculum_block{
+    padding-top: 60px;
+    padding-bottom: 20px;
+    position: relative;
+    background: #fff;
+    padding:10px;
+}
+.btn-long{
+    width: 100% !important;
+    margin-top: 10px;
+    position: relative;
+    text-transform: uppercase;
+    padding: 0.85em 1.1em;
+    border-radius: 0.2em;
+    /*background-color: #2196f3;
+    border-color: #0d8aee;*/
+}
+.edit_block{
+    position: absolute;
+    right: 15px;
+    font-size: 20px;
+}
+.curriculum_block_data{
+    max-height: 600px;
+    overflow: auto;
+}
+.btn-long i:hover{
+    cursor: pointer;
+}
+/*.courses{
+    color: #fff;
+}
+.scenes{
+    background-color: #00bcd4;
+    color: #fff;
+}
+.tasks{
+    background-color: #ff9800;
+    color: #fff;
+}
+.episodes{
+    background-color: #ff5722;
+    color: #fff;
+}*/
+/*modal*/
+.modal-open{
+    overflow:visible;
+}
+/*dashboard*/
+.dashboard_info div div{
+  padding-top:10px;
+  padding-bottom:10px;
+  border-left: 1px solid red;
+  border-right: 1px solid red;
+}
+
+
+.table > thead > tr > th{
+  font-weight: 700 !important;
+}
+.table-bordered > tbody > tr > td{
+  vertical-align: middle;
+  text-align: center
+}
+.audio_content{
+  margin-bottom: 5px;
+}
+.audio_content {
+  position: relative;
+  padding-left:25px;
+  padding-right:25px;
+}
+.audio_content p{
+  margin-bottom:0px;
+  border-left:1px solid red;
+  border-right:1px solid red;
+  padding-left:2px;
+  padding-right:2px;
+}
+.audio_play{
+  position: absolute;
+  left: 2px;
+  font-size: 20px;
+  vertical-align: middle;
+}
+.audio_message{
+  position: absolute;
+  right:2px;
+  font-size: 20px;
+  top:0px;
+}
+md-slider {
+  max-width: 100px;
+}
+.grading input{
+  width: 45px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+
+
+/**
+ *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector

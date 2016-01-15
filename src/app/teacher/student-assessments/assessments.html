@@ -1,0 +1,33 @@
+<section id="student-assessment">
+    <div class="block-header">
+        <h2>Student Assessment</h2>
+    </div>
+    <md-card>
+        <md-card-content>
+            <md-data-table-toolbar>
+                <h2 class="md-title">Classes</h2>
+            </md-data-table-toolbar>
+            <md-data-table-container>
+                <table md-data-table md-row-select="selected" md-progress="deferred">
+                    <thead>
+                        <tr>
+                            <th order-by="name">Tasks</th>
+                            <th numeric order-by="calories.value">Attachments</th>
+                            <th numeric order-by="calories.value">Students executed</th>
+                            <th numeric unit="g" order-by="fat.value">Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="task in tasks">
+                            <td>{{task.name}}</td>
+                            <td>{{task.attachments}}</td>
+                            <td>{{task.done}}</td>
+                            <td><a data-ui-sref="main.task-assesment"><i class="zmdi zmdi-thumb-up-down"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-data-table-container>
+            <md-data-table-pagination md-limit="" md-page="" md-total="{{}}" md-trigger="onPaginationChange"></md-data-table-pagination>
+        </md-card-content>
+    </md-card>
+</section>

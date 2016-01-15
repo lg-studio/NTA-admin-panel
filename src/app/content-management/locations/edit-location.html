@@ -1,0 +1,73 @@
+<section id="create-location">
+    <div class="block-header">
+        <h2>Content Mananagement</h2>
+    </div>
+    <md-card>
+        <md-toolbar layout-padding>
+            <div class="md-toolbar-tools">
+                <md-button data-ui-sref="main.locations" class="toolbar-back-btn">
+                    <md-icon class="md-light"> <i class="zmdi zmdi-hc-3x zmdi-chevron-left"></i> </md-icon>
+                </md-button>
+                <h2 class="md-title">Edit Location</h2>
+                <mark ng-if="updatedLocation">Location successfully updated</mark>
+                <p ng-if="error" class="text-danger">{{error.error}}</p>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <form name="editLocationForm" ng-submit="$event.preventDefault(); editLocation()">
+                <div class="map-wrap" class="ng-scope">
+                    <map class="map" center="{{location.lon || DEFAULT_LON}},{{location.lat || DEFAULT_LAT}}" zoom="10" on-click="placeMarker()">
+                        <marker ng-if="!marker && location.lon && location.lat" position="{{location.lon }} , {{location.lat}}" title="TITLE"></marker>
+                    </map>
+                </div>
+                <md-input-container>
+                    <label>Location Name</label>
+                    <input type="text" required ng-model="location.name">
+                </md-input-container>
+                <md-input-container>
+                    <label>Location Description</label>
+                    <input type="text" required ng-model="location.desc">
+                </md-input-container>
+                <md-container>
+                    <md-toolbar class="md-priamry">
+                        <div class="md-toolbar-tools">
+                            <h2 class="md-flex">Image</h2>
+                        </div>
+                    </md-toolbar>
+                    Current Image:
+                    <br>
+                    <img fallback-src="assets/img/location.png" class="current-img" ng-src="{{locationImg}}{{location.id}}">
+                    <div upload-image ng-show="!showMediaLibrary">
+                        <br>Upload Image:
+                        <div ngf-drop ngf-select ng-model="filesToUpload" class="drop-box" ngf-drag-over-class="dragover" ngf-multiple="false" ngf-allow-dir="false" accept="image/*">Drop image here or click to upload</div>
+                        <md-button class="md-icon-button" type="button" aria-label="Remove Uploaded Image" ng-show="uploadedImageUrl" ng-click="removeUploadedImage()">
+                            <i class="zmdi zmdi-close zmdi-hc-lg"></i>
+                        </md-button>
+                        <img ng-show="uploadedImageUrl" class="image-preview md-whiteframe-z4" ng-src="{{uploadedImageUrl}}" />
+                        <p ng-show="filesToUpload && filesToUpload.length > 0">File name: <span ng-repeat="f in filesToUpload">{{f.name}}</span></p>
+                        <div class="progress-bar-container" ng-show="progressPercentage && filesToUpload">
+                            <div class="progress-bar" style="width:{{ progressPercentage }}%;"> {{ progressPercentage }}%</div>
+                        </div>
+                    </div>
+                    <md-input-container>
+                        <md-button class="md-raised" type="button" ng-click="toggleImageLoadType()">{{ imageLoadTypeText }}</md-button>
+                    </md-input-container>
+                    <div ng-show="showMediaLibrary">
+                        <md-grid-list md-cols-gt-lg="10" md-cols-lg="8" md-cols-gt-md="8" md-cols-md="6" md-cols-gt-sm="6" md-cols-sm="2" md-row-height-sm="50px" md-row-height-md="60px" md-row-height="80px" md-gutter="15px" md-gutter-gt-sm="15px">
+                            <md-grid-tile class="md-whiteframe-z3" ng-repeat="image in mediaImages" md-rowspan="2" md-colspan="2" md-colspan-sm="1" ng-click="selectImageFromMediaLibrary(image)">
+                                <img ng-src="{{imageUrlPattern + image.id}}" class="img-responsive" alt="Image">
+                                <md-grid-tile-footer class="selectedImage" ng-click="">
+                                    <h3>{{$index}}</h3>
+                                    <input class="checkedImg" type="radio" ng-model="image.name" name="id" value="" required />
+                                </md-grid-tile-footer>
+                            </md-grid-tile>
+                        </md-grid-list>
+                    </div>
+                </md-container>
+                <md-button type="submit" class="md-raised">
+                    Save
+                </md-button>
+            </form>
+        </md-card-content>
+    </md-card>
+</section>

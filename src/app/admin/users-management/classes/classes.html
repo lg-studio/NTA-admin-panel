@@ -1,0 +1,67 @@
+<section id="class">
+    <div class="block-header">
+        <h2>Users Mananagement</h2>
+    </div>
+    <md-card>
+        <md-card-content>
+            <md-data-table-toolbar ng-hide="selected.length || filter.show">
+                <h2 class="md-title">Classes</h2>
+                <div flex=""></div>
+                <md-button aria-label="Search" class="md-icon-button" ng-click="filter.show = true" aria-label="Show Search">
+                    <i class="zmdi zmdi-hc-lg zmdi-search"></i>
+                </md-button>
+                <md-button aria-label="Plus" data-ui-sref="main.admin-create-class" class="md-fab md-button md-primary">
+                    <i class="zmdi zmdi-plus zmdi-hc-lg"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-toolbar ng-show="filter.show && !selected.length">
+                <md-input-container class="md-icon-float" flex>
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Search</label>
+                    <input type="text" ng-model="query.filter" ng-model-options="filter.options">
+                </md-input-container>
+                <md-button aria-label="Close" class="md-icon-button" ng-click="removeFilter()" aria-label="Remove Search">
+                    <i class="zmdi zmdi-close zmdi-hc-lg"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-toolbar ng-show="selected.length" layout-align="space-between">
+                <div>{{selected.length}} items selected</div>
+                <md-button aria-label="Delete" class="md-fab md-mini md-primary" aria-label="Delete Selected Class" ng-click="deleteSelectedClasses()">
+                    <i class="zmdi zmdi-delete"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-container>
+                <table md-data-table md-row-select="selected" md-progress="deferred">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Class name</th>
+                            <th>Class desc</th>
+                            <th>Students</th>
+                            <th>Courses</th>
+                            <th>Code</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="class in classes | filter: query.filter">
+                            <td>{{$index + 1}}</td>
+                            <td ng-bind="::class.name"></td>
+                            <td ng-bind="::class.desc | limitTo: 300"></td>
+                            <td ng-bind="::class.users.length"></td>
+                            <td ng-bind="::class.courses.length"></td>
+                            <td ng-bind="::class.code"></td>
+                            <td>
+                                <md-button aria-label="Edit" class="md-fab md-mini md-warn chat-plus md-button md-default-theme" data-ui-sref="main.admin-edit-class({id: class.id})">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-data-table-container>
+            <!--  <md-data-table-pagination md-limit="query.limit" md-page="1" md-total="{{courses.length}}" md-trigger="onPaginationChange"></md-data-table-pagination> -->
+        </md-card-content>
+    </md-card>
+</section>
+

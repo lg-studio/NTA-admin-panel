@@ -1,0 +1,65 @@
+<section id="scenes">
+    <div class="block-header">
+        <h2>Content Mananagement</h2>
+    </div>
+    <md-card>
+        <md-card-content>
+            <md-data-table-toolbar ng-hide="selected.length || filter.show">
+                <h2 class="md-title">Scenes</h2>
+                <div flex=""></div>
+                <md-button  class="md-icon-button" ng-click="filter.show = true" aria-label="Show Search">
+                    <i class="zmdi zmdi-hc-lg zmdi-search"></i>
+                </md-button>
+                <md-button aria-label="Create scene" data-ui-sref="main.create-scene" class="md-fab md-button md-primary">
+                    <i class="zmdi zmdi-plus zmdi-hc-lg"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-toolbar ng-show="filter.show && !selected.length">
+                <md-input-container class="md-icon-float" flex>
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Search</label>
+                    <input type="text" ng-model="query.filter" ng-model-options="filter.options">
+                </md-input-container>
+                <md-button class="md-icon-button" type="button" ng-click="removeFilter()" aria-label="Remove Search">
+                    <i class="zmdi zmdi-close zmdi-hc-lg"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-toolbar ng-show="selected.length" layout-align="space-between">
+                <div>{{selected.length}} items selected</div>
+                <md-button aria-label="Delete scene" class="md-fab md-mini md-primary" aria-label="Delete Selected Scenes" ng-click="deleteSelectedScenes()">
+                    <i class="zmdi zmdi-delete"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-container>
+                <table md-data-table md-row-select="selected" md-progress="deferred">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Scene name</th>
+                            <th>Scene desc</th>
+                            <th>Tasks</th>
+                            <th>Edit</th>
+                            <!-- <th unit="g" order-by="fat.value">dummy label</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="scene in scenes | filter: query.filter">
+                            <td>{{$index + 1}}</td>
+                            <td><img fallback-src="assets/img/location.png" class="scene-img" ng-src="{{sceneImg}}{{scene.id}}"></td>
+                            <td ng-bind="::scene.name"></td>
+                            <td ng-bind="::scene.desc"></td>
+                            <td ng-bind="::scene.tasks.length"></td>
+                            <td>
+                                <md-button aria-label="Edit scene" class="md-fab md-mini md-warn chat-plus md-button md-default-theme" data-ui-sref="main.edit-scene({id: scene.id})">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-data-table-container>
+            <!--  <md-data-table-pagination md-limit="query.limit" md-page="1" md-total="{{courses.length}}" md-trigger="onPaginationChange"></md-data-table-pagination> -->
+        </md-card-content>
+    </md-card>
+</section>

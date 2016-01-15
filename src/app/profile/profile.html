@@ -1,0 +1,91 @@
+<section id="profile">
+    <div class="block-header">
+        <h2>My Profile</h2>
+    </div>
+    <div class="card md-whiteframe-z1" id="profile-main">
+        <div class="pm-overview c-overflow">
+            <div class="pmo-pic">
+                <div class="p-relative">
+                    <a href="">
+                        <img class="img-responsive" ng-src="{{avatar}}" alt="Avatar">
+                    </a>
+                    <!-- <a href="" class="pmop-edit">
+                        <i class="md md-camera-alt"></i> <span class="hidden-xs">Update Profile Picture</span>
+                    </a> -->
+                </div>
+                <div class="pmo-stat">
+                    <h2 class="m-0 c-white"><span ng-bind="::User.first_name"></span> <span ng-bind="::User.last_name"></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="pm-body clearfix">
+            <div class="pmb-block">
+                <div class="pmbb-header">
+                    <h2><i class="md md-person m-r-5"></i> Basic Information</h2>
+                </div>
+                <div class="pmbb-body p-l-30">
+                    <div class="pmbb-view">
+                        <dl class="dl-horizontal">
+                            <dt>Full Name</dt>
+                            <dd>{{User.first_name}} {{User.last_name}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Gender</dt>
+                            <dd>{{ User.gender }}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Year Born</dt>
+                            <dd>{{ User.birthday|date:"yyyy" }}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Home Country</dt>
+                            <dd>{{ User.country }}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Native Language</dt>
+                            <dd>{{ User.language}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="pmb-block">
+                <div class="pmbb-header">
+                    <h2><i class="md md-person m-r-5"></i> Account Information</h2>
+                </div>
+                <div class="pmbb-body p-l-30">
+                    <div class="pmbb-view">
+                        <dl class="dl-horizontal">
+                            <dt>Registered</dt>
+                            <dd>{{User.registered|date:'medium'}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Role</dt>
+                            <dd>{{ User.role }}</dd>
+                        </dl>
+                        <dl class="dl-horizontal" ng-if="User.role === 'teacher'">
+                            <dt>Admin of classes</dt>
+                            <dd><span ng-repeat="class in classes">{{class.name}}, </span></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="pmb-block">
+                <div class="pmbb-header">
+                    <h2><i class="md md-person m-r-5"></i> Contact Information</h2>
+                </div>
+                <div class="pmbb-body p-l-30">
+                    <div class="pmbb-view">
+                        <dl class="dl-horizontal">
+                            <dt>Email Adress</dt>
+                            <dd>{{User.email}}</dd>
+                        </dl>
+                        <dl class="dl-horizontal">
+                            <dt>Mobile Phone</dt>
+                            <dd>{{ User.phone}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

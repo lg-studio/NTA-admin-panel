@@ -1,0 +1,83 @@
+<section layout="row" id="leftSidebar">
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left-sidebar" md-is-locked-open="$mdMedia('min-width: 1479px')">
+        <md-content>
+            <div class="profile-menu" data-ng-class="{'toggled': toggledProfile }">
+                <!-- <a href="" data-ng-click="showUserMenu = !showUserMenu"> -->
+                <a href="" data-ng-click="toggledProfile = !toggledProfile">
+                    <div class="profile-pic">
+                        <img ng-src="{{avatar}}" alt="Avatar">
+                    </div>
+                    <div class="profile-info">
+                        {{User.profile.first_name}} {{User.profile.last_name}}
+                        <i class="zmdi zmdi-caret-down"></i>
+                    </div>
+                </a>
+                <ul class="main-menu">
+                    <!-- ng-show="showUserMenu"-->
+                    <li>
+                        <a data-ui-sref="main.profile" data-ng-click="closeSidebar()"><i class="zmdi zmdi-account"></i> View Profile</a>
+                    </li>
+                    <li ng-if="User.isAdmin()">
+                        <a href=""><i class="zmdi zmdi-settings" data-ng-click="closeSidebar()"></i> Settings</a>
+                    </li>
+                    <li data-ng-click="User.logout()">
+                        <a href=""><i class="zmdi zmdi-undo" data-ng-click="closeSidebar()"></i> Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidenav-menu-container">
+                <ul class="main-menu" ng-if="User.isTeacher()">
+                    <li data-ui-sref-active="active"><a data-ui-sref="main.teacher-home" data-ng-click="closeSidebar()"><i class="zmdi zmdi-home"></i>Home</a></li>
+                    <li data-ui-sref-active="active"><a data-ui-sref="main.student-assessments" data-ng-click="closeSidebar()"><i class="zmdi zmdi-star"></i>Student Assessment</a></li>
+                    <li class="sub-menu">
+                        <a href="" data-ng-click="toggleSubmenu($event)"><i class="zmdi zmdi-accounts-alt"></i>Student Analytics</a>
+                        <ul>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.dashboard" data-ng-click="closeSidebar()">Overview</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.dashboard" data-ng-click="closeSidebar()">Competencies</a></li>
+                        </ul>
+                    </li>
+                    <li data-ui-sref-active="active"><a data-ui-sref="main.assignments" data-ng-click="closeSidebar()"><i class="zmdi zmdi-star"></i>Student Assignments</a></li>
+                    <li data-ui-sref-active="active"><a data-ui-sref="main.student-management" data-ng-click="closeSidebar()"><i class="zmdi zmdi-star"></i>Student Management</a></li>
+                    <li class="sub-menu">
+                        <a href="" data-ng-click="toggleSubmenu($event)"><i class="zmdi zmdi-edit"></i>Content Management</a>
+                        <ul>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.courses" data-ng-click="closeSidebar()">Courses</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.episodes" data-ng-click="closeSidebar()">Episodes</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.scenes" data-ng-click="closeSidebar()">Scenes</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.tasks" data-ng-click="closeSidebar()">Tasks</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.characters" data-ng-click="closeSidebar()">Characters</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.locations" data-ng-click="closeSidebar()">Locations</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.media-library" data-ng-click="closeSidebar()">Media Library</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- admin -->
+                <ul class="main-menu" ng-if="User.isAdmin()">
+                    <li data-ui-sref-active="active"><a data-ui-sref="main.admin-home" data-ng-click="closeSidebar()"><i class="zmdi zmdi-home"></i>Home</a></li>
+                    <li class="sub-menu">
+                        <a href="" data-ng-click="toggleSubmenu($event)"><i class="zmdi zmdi-collection-text"></i>Content Management</a>
+                        <ul>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.courses" data-ng-click="closeSidebar()">Courses</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.episodes" data-ng-click="closeSidebar()">Episodes</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.scenes" data-ng-click="closeSidebar()">Scenes</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.tasks" data-ng-click="closeSidebar()">Tasks</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.characters" data-ng-click="closeSidebar()">Characters</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.locations" data-ng-click="closeSidebar()">Locations</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.competencies" data-ng-click="closeSidebar()">Competencies</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.dictionaries" data-ng-click="closeSidebar()">Dictionaries</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.media-library" data-ng-click="closeSidebar()">Media Library</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="" data-ng-click="toggleSubmenu($event)"><i class="zmdi zmdi-accounts-alt"></i>Users management</a>
+                        <ul>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.admin-manage-students" data-ng-click="closeSidebar()">Students</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.admin-manage-classes" data-ng-click="closeSidebar()">Classes</a></li>
+                            <li><a data-ui-sref-active="active" data-ui-sref="main.admin-manage-teachers" data-ng-click="closeSidebar()">Teachers</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </md-content>
+    </md-sidenav>
+</section>

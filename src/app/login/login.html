@@ -1,0 +1,37 @@
+<div class="login-content">
+    <div class="lc-block toggled" id="l-login" ng-show="showLogin">{{showLogi}}
+        <form class="form-horizontal" name="loginForm" ng-submit="$event.preventDefault(); login()">
+            <p class="text-danger" ng-if="error">{{error}}</p>
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+                <md-input-container md-no-float>
+                    <input type="Email Address" ng-pattern="/^[a-zA-Z]+[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z.]{2,8}$/" name="email" ng-model="credentials.email" required placeholder="Email Address">
+                </md-input-container>
+            </div>
+            <div class="input-group m-b-20">
+                <span class="input-group-addon"><i class="zmdi zmdi-male"></i></span>
+                <md-input-container md-no-float>
+                    <input type="password" class="form-control password" name="password" ng-model="credentials.password" required ng-minlength="4" placeholder="Password">
+                </md-input-container>
+            </div>
+            <div class="clearfix"></div>
+            <button type="submit" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></button>
+            <ul class="login-navigation">
+                <li data-block="#l-forget-password" class="bgm-orange" ng-click="showLogin = false; showForgot = true">Forgot Password?</li>
+            </ul>
+        </form>
+    </div>
+    <div class="lc-block" id="l-forget-password" ng-show="showForgot">
+        <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu risus. Curabitur commodo lorem fringilla enim feugiat commodo sed ac lacus.</p>
+        <div class="input-group m-b-20">
+            <span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+            <md-input-container md-no-float>
+                <input type="Email Address" ng-pattern="/^[a-zA-Z]+[a-zA-Z0-9._]+@[a-zA-Z]+\.[a-zA-Z.]{2,8}$/" name="email" ng-model="credentials.email" required placeholder="Email Address">
+            </md-input-container>
+        </div>
+        <button type="submit" class="btn btn-login btn-danger btn-float"><i class="zmdi zmdi-arrow-forward"></i></button>
+        <ul class="login-navigation">
+            <li data-block="#l-login" class="bgm-green" ng-click="showForgot = false; showLogin= true">Login</li>
+        </ul>
+    </div>
+</div>

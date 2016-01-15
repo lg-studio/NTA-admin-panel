@@ -1,0 +1,48 @@
+<section id="media-library">
+    <div class="block-header">
+        <h2>Content Mananagement</h2>
+    </div>
+    <md-card>
+        <md-card-content>
+            <md-data-table-toolbar ng-hide="selectedFiles.length">
+                <h2 class="md-title">Media</h2>
+                <div flex=""></div>
+                <md-button class="md-icon-button" ng-show="showUploadImage" ng-click="showUploadImage = false" aria-label="Close upload image area">
+                    <i class="zmdi zmdi-close zmdi-hc-lg"></i>
+                </md-button>
+                <md-button class="md-fab md-mini md-primary" aria-label="Add Files To Mediabank" ng-show="!showUploadImage" ng-click="showUploadImage = true">
+                    <i class="zmdi zmdi-plus"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <md-data-table-toolbar ng-show="selectedFiles.length" layout-align="space-between">
+                <div>{{selectedFiles.length}} items selected</div>
+                <md-button class="md-fab md-mini md-primary" aria-label="Delete Selected Files" ng-click="deleteSelectedFiles()">
+                    <i class="zmdi zmdi-delete"></i>
+                </md-button>
+            </md-data-table-toolbar>
+            <div upload-image ng-show="showUploadImage && selectedFiles.length == 0">
+                <br>Upload Image:
+                <div ngf-drop ngf-select ng-model="filesToUpload" class="drop-box" ngf-drag-over-class="dragover" ngf-multiple="false" ngf-allow-dir="false" accept="image/*">Drop image here or click to upload</div>
+                <img ng-show="uploadedImageUrl" class="image-preview md-whiteframe-z4" ng-src="{{uploadedImageUrl}}" />
+                <p ng-show="filesToUpload && filesToUpload.length > 0" >File name: <span ng-repeat="f in filesToUpload">{{f.name}}</span></p>
+                <div class="progress-bar-container" ng-show="progressPercentage && filesToUpload">
+                    <div class="progress-bar" style="width:{{ progressPercentage }}%;"> {{ progressPercentage }}%</div>
+                </div>
+                <md-button class="md-primary md-raised" ng-click="uploadFiles(filesToUpload)">
+                    Upload
+                </md-button>
+            </div>
+            <md-grid-list md-cols-gt-lg="10" md-cols-lg="8" md-cols-gt-md="8" md-cols-md="6" md-cols-gt-sm="6" md-cols-sm="2" md-row-height-sm="50px" md-row-height-md="60px" md-row-height="80px" md-gutter="15px" md-gutter-gt-sm="15px">
+                <md-grid-tile class="md-whiteframe-z3" ng-repeat="image in images" md-rowspan="2" md-colspan="2" md-colspan-sm="1">
+                    <img ng-src="{{imageUrlPattern + image.id}}" class="img-responsive" alt="Image">
+                    <md-grid-tile-footer>
+                        <h3>{{$index}}</h3>
+                        <!-- <div flex></div> -->
+                        <md-checkbox ng-checked="exists(image, selectedFiles)" ng-click="toggleFile(image, selectedFiles)" aria-label="Check Image">
+                        </md-checkbox>
+                    </md-grid-tile-footer>
+                </md-grid-tile>
+            </md-grid-list>
+        </md-card-content>
+    </md-card>
+</section>

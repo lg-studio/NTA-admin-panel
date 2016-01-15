@@ -1,0 +1,89 @@
+<section>
+    <div class="block-header">
+        <h2>Create Task</h2>
+    </div>
+    <div class="z-depth-1 create_task_block">
+        <div class="row">
+            <form name="createTaskForm" ng-submit="createTask()">
+                <div class="col-xs-2">
+                    <md-select placeholder="Select group" ng-model="ctrl.groups">
+                        <md-option ng-repeat="group in groups" ng-click="selectGroup(group)" value="{{group.name}}">{{group.name}}</md-option>
+                    </md-select>
+                    <!-- <div class="dropdown" data-animation="fadeIn,fadeOut,300">
+                        <button type="button" class="btn btn-primary" data-toggle="dropdown">Select Group<i class="caret"></i></button>
+                        <ul class="dropdown-menu pull-left">
+                            <li ng-repeat="group in groups"><a href="" ng-click="selectGroup(group)">{{group.name}}</a></li>
+                        </ul>
+                    </div> -->
+                    <md-select placeholder="Select semester" ng-model="ctrl.semesters" ng-disabled="!semesters">
+                        <md-option ng-repeat="semester in semesters" ng-click="selectSemesters(semester)" value="{{semester.name}}">{{semester.name}}</md-option>
+                    </md-select>
+                    <!-- <div class="dropdown select_semester" data-animation="fadeIn,fadeOut,300">
+                        <button type="button" class="btn btn-primary" data-toggle="dropdown" ng-disabled="!semesters">Semesters<i class="caret"></i></button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="semester in semesters"><a href="" ng-click="selectSemesters(semester)">{{semester.name}}</a></li>
+                        </ul>
+                    </div> -->
+                    <md-select placeholder="Select episode" ng-model="ctrl.episodes" ng-disabled="!episodes">
+                        <md-option ng-repeat="episode in episodes" ng-click="selectEpisodes(episode)" value="{{episode.name}}">{{episode.name}}</md-option>
+                    </md-select>
+                    <!-- <div class="dropdown select_episode" data-animation="fadeIn,fadeOut,300">
+                        <button type="button" class="btn btn-primary" data-toggle="dropdown" ng-disabled="!episodes">Episodes<i class="caret"></i></button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="episode in episodes"><a href="" ng-click="selectEpisodes(episode)">{{episode.name}}</a></li>
+                        </ul>
+                    </div> -->
+                    <md-select placeholder="Select scene" ng-model="ctrl.scenes" ng-disabled="!scenes">
+                        <md-option ng-repeat="scene in scenes" ng-click="selectScene(scene)" value="{{scene.name}}">{{scene.name}}</md-option>
+                    </md-select>
+                    <!-- <div class="dropdown select_scene" data-animation="fadeIn,fadeOut,300">
+                        <button type="button" class="btn btn-primary" data-toggle="dropdown" ng-disabled="!scenes">Scenes<i class="caret"></i></button>
+                        <ul class="dropdown-menu">
+                            <li ng-repeat="scene in scenes"><a href="" ng-click="selectScene(scene)">{{scene.name}}</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+                <div class="col-xs-6 info_task_block">
+                    <md-input-container>
+                        <input type="text" name="taskTitle" placeholder="Task Title" ng-model="task.name">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <textarea placeholder="Task text" ng-model="task.desc"></textarea>
+                    </md-input-container>
+                    <md-input-container>
+                        <input type="number" name="taskTitle" placeholder="Task dueDate" ng-model="task.dueDate">
+                    </md-input-container>
+                    <div class="row characters">
+                        <div class="col-xs-12">
+                            <!-- <md-select placeholder="Select Character" ng-model="ctrl.characters">
+                                <md-option ng-repeat="character in characters" ng-click="addCharacter(character)" value="{{character.name}}">{{character.name}}</md-option>
+                            </md-select> -->
+                            <div class="dropdown" data-animation="fadeIn,fadeOut,300">
+                                <button type="button" class="btn btn-primary" data-toggle="dropdown">Select Character<i class="caret"></i></button>
+                                <ul class="dropdown-menu pull-left">
+                                    <li ng-repeat="character in characters"><a href="" ng-click="addCharacter(character)">{{character.name}}</a></li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn bgm-lightblue waves-effect waves-button waves-float create" ng-click="showCreateCharacterModal($event)" tabindex="0">Create Character</button>
+                        </div>
+                    </div>
+                    <div class="row locations">
+                        <div class="col-xs-12">
+                            <!-- <md-select placeholder="Select Location" ng-model="ctrl.locations">
+                                <md-option ng-repeat="location in locations" ng-click="addLocation(location)" value="{{lcoation.name}}">{{lcoation.name}}</md-option>
+                            </md-select> -->
+                            <div class="dropdown" data-animation="fadeIn,fadeOut,300">
+                                <button type="button" class="btn btn-primary" data-toggle="dropdown">Select Location<i class="caret"></i></button>
+                                <ul class="dropdown-menu pull-left">
+                                    <li ng-repeat="location in locations"><a href="" ng-click="addLocation(location)">{{location.name}}</a></li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn bgm-lightblue waves-effect waves-button waves-float create" ng-click="showCreateLocationModal($event)" tabindex="0">Create Location</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

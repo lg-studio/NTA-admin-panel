@@ -1,0 +1,31 @@
+<section id="student-management">
+    <div class="block-header">
+        <h2>Student Management</h2>
+    </div>
+    <md-card>
+        <md-card-content>
+            <md-data-table-toolbar>
+                <h2 class="md-title">Classes</h2>
+            </md-data-table-toolbar>
+            <md-data-table-container>
+                <table md-data-table md-row-select="selected" md-progress="deferred">
+                    <thead>
+                        <tr>
+                            <th order-by="name">Class name</th>
+                            <th numeric order-by="calories.value">Class Description</th>
+                            <th numeric unit="g" order-by="fat.value">Class Code</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="class in classes">
+                            <td>{{class.name}}</td>
+                            <td>{{class.desc}}</td>
+                            <td>{{class.code}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </md-data-table-container>
+            <md-data-table-pagination md-limit="query.limit" md-page="query.page" md-total="{{}}" md-trigger="onPaginationChange"></md-data-table-pagination>
+        </md-card-content>
+    </md-card>
+</section>

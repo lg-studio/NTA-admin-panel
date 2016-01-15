@@ -1,0 +1,56 @@
+<section id="edit-course">
+    <div class="block-header">
+        <h2>Content Mananagement</h2>
+    </div>
+    <md-card>
+        <md-toolbar layout-padding class="md-warn">
+            <div class="md-toolbar-tools">
+                <md-button aria-label="" data-ui-sref="main.courses" class="toolbar-back-btn">
+                    <md-icon class="md-light"> <i class="zmdi zmdi-hc-3x zmdi-chevron-left"></i> </md-icon>
+                </md-button>
+                <h2 class="md-title">Edit Course</h2>
+                <span ng-if="createdCourse">Course successfully created</span>
+                <p ng-if="error" class="text-danger">{{error.error}}</p>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <form name="createCourseForm" ng-submit="$event.preventDefault(); editCourse()">
+                <md-input-container>
+                    <label>Course Name</label>
+                    <input type="text" required ng-model="course.name">
+                </md-input-container>
+                <md-input-container>
+                    <label>Course Description</label>
+                    <input type="text" required ng-model="course.desc">
+                </md-input-container>
+                <md-input-container>
+                    <md-toolbar class="md-priamry">
+                        <div class="md-toolbar-tools">
+                            <h2 class="md-flex">Episodes</h2>
+                        </div>
+                    </md-toolbar>
+                    <table md-data-table md-row-select="selectedEpisodes" md-progress="deferred">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Episode name</th>
+                                <th>Scenes</th>
+                                <!-- <th unit="g" order-by="fat.value">dummy label</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="episode in episodes | filter: query.filter">
+                                <td>{{$index + 1}}</td>
+                                <td ng-bind="::episode.name"></td>
+                                <td ng-bind="::episode.scenes.length"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-input-container>
+                <md-button aria-label="" type="submit" class="md-raised">
+                    Save
+                </md-button>
+            </form>
+        </md-card-content>
+    </md-card>
+</section>

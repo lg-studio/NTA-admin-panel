@@ -1,0 +1,81 @@
+<section id="create-character">
+    <div class="block-header">
+        <h2>User Mananagement</h2>
+    </div>
+    <md-card>
+        <md-toolbar layout-padding class="md-warn">
+            <div class="md-toolbar-tools">
+                <md-button aria-label="manage students" data-ui-sref="main.admin-manage-students" class="toolbar-back-btn">
+                    <md-icon class="md-light"> <i class="zmdi zmdi-hc-3x zmdi-chevron-left"></i> </md-icon>
+                </md-button>
+                <h2 class="md-title">Create Student</h2>
+                <mark ng-if="createdStudent">Student successfully created</mark>
+                <p ng-if="error" class="text-danger">{{error.error}}</p>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <form name="createStudentForm" ng-submit="$event.preventDefault(); createStudent()">
+                <md-input-container>
+                    <label>First Name</label>
+                    <input type="text" required ng-model="newStudent.first_name">
+                </md-input-container>
+                <md-input-container>
+                    <label>Last Name</label>
+                    <input type="text" required ng-model="newStudent.last_name">
+                </md-input-container>
+                <md-input-container>
+                    <label>Email</label>
+                    <input type="email" required ng-model="newStudent.email">
+                </md-input-container>
+                <md-input-container>
+                    <label>Country</label>
+                    <input type="text" required ng-model="newStudent.country">
+                </md-input-container>
+                <md-input-container>
+                    <label>Language</label>
+                    <input type="text" required ng-model="newStudent.language">
+                </md-input-container>
+                <md-input-container>
+                    <label>Phone</label>
+                    <input type="text" required ng-model="newStudent.phone">
+                </md-input-container>
+                <md-input-container>
+                    <label>Birthday</label>
+                    <input type="number" required ng-model="newStudent.birthday">
+                </md-input-container>
+                <md-input-container>
+                    <md-select placeholder="Gender" ng-model="newStudent.gender">
+                        <md-option class="student-option" value="Male">Male</md-option>
+                        <md-option class="student-option" value="Female">Female</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <md-toolbar class="md-priamry">
+                        <div class="md-toolbar-tools">
+                            <h2 class="md-flex">Add Student to classes</h2>
+                        </div>
+                    </md-toolbar>
+                    <table md-data-table md-row-select="selectedClasses" md-progress="deferred">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Class name</th>
+                                <th>Students</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="class in classes">
+                                <td>{{$index + 1}}</td>
+                                <td>{{class.name}}</td>
+                                <td>{{class.users.length}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-input-container>
+                <md-button aria-label="submit" type="submit" class="md-raised">
+                    Save
+                </md-button>
+            </form>
+        </md-card-content>
+    </md-card>
+</section>
